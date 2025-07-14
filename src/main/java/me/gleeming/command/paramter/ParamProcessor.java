@@ -69,6 +69,7 @@ public class ParamProcessor {
         processors.put(long.class, new LongProcessor());
         processors.put(double.class, new DoubleProcessor());
         processors.put(boolean.class, new BooleanProcessor());
+        processors.put(float.class, new FloatProcessor());
 
         processors.put(ChatColor.class, new ChatColorProcessor());
         processors.put(Player.class, new PlayerProcessor());
