@@ -64,6 +64,9 @@ public class BukkitCommand extends Command {
                     .collect(Collectors.toList());
 
             CommandNode node = sortedNodes.get(sortedNodes.size() - 1);
+            if(!node.isAllowComplete()){
+                return new ArrayList<>();
+            }
             if(node.getMatchProbability(sender, label, args, true) >= 50) {
 
                 int extraLength = node.getNames().get(0).split(" ").length - 1;

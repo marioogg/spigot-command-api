@@ -28,6 +28,7 @@ public class CommandNode {
     private final String permission;
     private final String description;
     private final boolean async;
+    private final boolean allowComplete;
 
     // Executor information
     private final boolean playerOnly;
@@ -53,6 +54,7 @@ public class CommandNode {
         this.async = command.async();
         this.playerOnly = command.playerOnly();
         this.consoleOnly = command.consoleOnly();
+        this.allowComplete = command.allowComplete();
 
         // Reflection
         this.parentClass = parentClass;
@@ -159,7 +161,7 @@ public class CommandNode {
         }
 
         if(!permission.equals("") && !sender.hasPermission(permission)) {
-            sender.sendMessage(ChatColor.RED + "I'm sorry, although you do not have permission to execute this command.");
+            sender.sendMessage(ChatColor.RED + "I'm sorry, you do not have permission to execute this command.");
             return;
         }
 

@@ -23,7 +23,7 @@ publishing {
 
     repositories {
         maven {
-            url "https://repo.trinsic.dev/repository/trinsic-public/"
+            url "https://maven.marioogg.dev/repository/private"
             credentials {
                 username = System.getenv("MAVEN_USERNAME")
                 password = System.getenv("MAVEN_PASSWORD")

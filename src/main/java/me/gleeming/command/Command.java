@@ -26,8 +26,7 @@ public @interface Command {
     /**
      * Gets the description of the command
      */
-    String description() default "This command doesn't have a description.";
-
+    String description() default "";
 
     /**
      * Checks if command is console only
@@ -38,4 +37,9 @@ public @interface Command {
      * Checks if command is player only
      */
     boolean playerOnly() default false;
+
+    /**
+     * Checks if the command can be tab-completed
+     */
+    boolean allowComplete() default true;
 }
