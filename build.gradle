@@ -17,7 +17,7 @@ repositories {
 publishing {
     publications {
         shadow(MavenPublication) {
-            publication -> project.shadow.component(publication)
+            artifact(tasks.shadowJar)
         }
     }
 
@@ -40,4 +40,8 @@ dependencies {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+}
+
+tasks.shadowJar {
+    archiveClassifier.set('')
 }
