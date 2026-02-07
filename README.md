@@ -1,5 +1,14 @@
 # spigot-command-api
-This is a Spigot Command API made by me, it's extremely useful & easy to use.
+
+### DISCLAIMER:
+
+I did not make not helped in the initial development of this project. All the credit goes to [ashtton](https://github.com/ashtton) and his [original project](https://github.com/ashtton/spigot-command-api).
+
+What I'll actually do is maintain this plugin updated and according to my needs, while keeping it public, as far as providing builds on my Maven repository (check below).
+
+To keep my Java packages ordered, I'll probably rename the packages to me.marioogg.*, although this message will stay here because my intention will never be skidding other ones code. If you have any kind of proposal to add a feature, open a [pull request](https://github.com/marioogg/spigot-command-api/pulls) or an [issue](https://github.com/marioogg/spigot-command-api/issues)
+
+
 ### Features
 * Creates usage messages for you
 * Automatically parses parameters
@@ -14,6 +23,39 @@ You can also create custom processors which there is an example of at the bottom
 * **Numbers:** Integer, Long, Double
 * **Players:** Player, OfflinePlayer
 * **Misc:** World, Boolean, Duration, ChatColor, Gamemode
+
+### Maven & Gradle Implementation
+**Maven:** In your *pom.xml* file, add the repository and the dependency.
+```xml
+<repositories>
+    <repository>
+        <id>marioogg</id>
+        <url>https://maven.marioogg.dev/repository/public/</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>me.gleeming.command</groupId>
+        <artifactId>spigot-command-api</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+</dependencies>
+```
+
+**Gradle:** In your *build.gradle* file, add the repository and the dependency.
+```groovy
+repositories {
+    maven {
+        url 'https://maven.marioogg.dev/repository/public/'
+    }
+}
+
+dependencies {
+    implementation 'me.gleeming.command:spigot-command-api:1.0-SNAPSHOT'
+}
+```
+
 ### Command Example
 This example shows you the basics of using the api
 ```java
@@ -52,11 +94,11 @@ public class Commands {
     
     // You can also make certain things not required like this
     @Command(names = {"eat"}, permission = "command.eat")
-    public void eatCommand(CommandSender sender, @Param(name = "target", required = false)) {
+    public void eatCommand(CommandSender sender, @Param(name = "target", required = false) Player target) {
         if(target != null) {
             target.setFoodLevel(20);
         } else {
-            sender.setFoodLevel(20);
+            ((Player) sender).setFoodLevel(20);
         }
     }
 }
@@ -100,7 +142,7 @@ public class MainClass extends JavaPlugin {
 
 // Package: me.gleeming.plugin.objects
 public enum CustomEnum {
-    BANANA, HAHA;
+    BANANA, HAHA
 }
 
 // Package: me.gleeming.plugin.processors
@@ -119,8 +161,8 @@ public class CustomEnumProcessor extends Processor<CustomEnum> {
     public List<String> tabComplete(CommandSender sender, String supplied) {
         return Arrays.stream(CustomEnum.values())
                 .map(ce -> ce.name())
-                .filter(name -> name.toLowerCase().startsWith(supplied.toLowerCase())
-                .collect(Collectors.toList()));
+                .filter(name -> name.toLowerCase().startsWith(supplied.toLowerCase()))
+                .collect(Collectors.toList());
     }
 }
 ```
