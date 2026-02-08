@@ -6,7 +6,7 @@ import me.gleeming.command.CommandHandler;
 import me.gleeming.command.help.HelpNode;
 import me.gleeming.command.node.ArgumentNode;
 import me.gleeming.command.node.CommandNode;
-import me.gleeming.command.paramter.ParamProcessor;
+import me.gleeming.command.parameter.ParamProcessor;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

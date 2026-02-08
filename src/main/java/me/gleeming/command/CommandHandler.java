@@ -7,8 +7,8 @@ import lombok.SneakyThrows;
 import me.gleeming.command.help.Help;
 import me.gleeming.command.help.HelpNode;
 import me.gleeming.command.node.CommandNode;
-import me.gleeming.command.paramter.ParamProcessor;
-import me.gleeming.command.paramter.Processor;
+import me.gleeming.command.parameter.ParamProcessor;
+import me.gleeming.command.parameter.Processor;
 import org.bukkit.plugin.Plugin;
 
 import java.util.*;

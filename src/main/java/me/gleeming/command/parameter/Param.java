@@ -1,4 +1,4 @@
-package me.gleeming.command.paramter;
+package me.gleeming.command.parameter;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

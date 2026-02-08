@@ -1,12 +1,11 @@
-package me.gleeming.command.paramter.impl;
+package me.gleeming.command.parameter.impl;
 
-import me.gleeming.command.paramter.Processor;
+import me.gleeming.command.parameter.Processor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;

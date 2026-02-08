@@ -1,6 +1,6 @@
-package me.gleeming.command.paramter.impl;
+package me.gleeming.command.parameter.impl;
 
-import me.gleeming.command.paramter.Processor;
+import me.gleeming.command.parameter.Processor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;

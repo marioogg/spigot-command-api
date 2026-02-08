@@ -1,10 +1,10 @@
-package me.gleeming.command.paramter;
+package me.gleeming.command.parameter;
 
 import lombok.Data;
 import lombok.Getter;
 import me.gleeming.command.duration.Duration;
 import me.gleeming.command.node.ArgumentNode;
-import me.gleeming.command.paramter.impl.*;
+import me.gleeming.command.parameter.impl.*;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.OfflinePlayer;
