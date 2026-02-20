@@ -1,7 +1,7 @@
-package me.gleeming.command.parameter.impl;
+package me.marioogg.command.parameter.impl;
 
-import me.gleeming.command.duration.Duration;
-import me.gleeming.command.parameter.Processor;
+import me.marioogg.command.duration.Duration;
+import me.marioogg.command.parameter.Processor;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 

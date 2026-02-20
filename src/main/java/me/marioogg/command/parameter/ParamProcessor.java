@@ -1,10 +1,10 @@
-package me.gleeming.command.parameter;
+package me.marioogg.command.parameter;
 
 import lombok.Data;
 import lombok.Getter;
-import me.gleeming.command.duration.Duration;
-import me.gleeming.command.node.ArgumentNode;
-import me.gleeming.command.parameter.impl.*;
+import me.marioogg.command.duration.Duration;
+import me.marioogg.command.node.ArgumentNode;
+import me.marioogg.command.parameter.impl.*;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.OfflinePlayer;

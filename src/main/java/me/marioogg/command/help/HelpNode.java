@@ -1,4 +1,4 @@
-package me.gleeming.command.help;
+package me.marioogg.command.help;
 
 import lombok.Data;
 import java.lang.reflect.Method;

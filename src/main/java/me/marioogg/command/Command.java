@@ -1,4 +1,4 @@
-package me.gleeming.command;
+package me.marioogg.command;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

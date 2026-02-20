@@ -1,14 +1,14 @@
-package me.gleeming.command;
+package me.marioogg.command;
 
 import com.google.common.reflect.ClassPath;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
-import me.gleeming.command.help.Help;
-import me.gleeming.command.help.HelpNode;
-import me.gleeming.command.node.CommandNode;
-import me.gleeming.command.parameter.ParamProcessor;
-import me.gleeming.command.parameter.Processor;
+import me.marioogg.command.help.Help;
+import me.marioogg.command.help.HelpNode;
+import me.marioogg.command.node.CommandNode;
+import me.marioogg.command.parameter.ParamProcessor;
+import me.marioogg.command.parameter.Processor;
 import org.bukkit.plugin.Plugin;
 
 import java.util.*;

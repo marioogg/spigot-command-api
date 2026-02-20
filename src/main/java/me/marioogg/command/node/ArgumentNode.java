@@ -1,4 +1,4 @@
-package me.gleeming.command.node;
+package me.marioogg.command.node;
 
 import lombok.Data;
 

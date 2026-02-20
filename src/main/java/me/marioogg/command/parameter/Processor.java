@@ -1,4 +1,4 @@
-package me.gleeming.command.parameter;
+package me.marioogg.command.parameter;
 
 import lombok.Getter;
 import lombok.SneakyThrows;

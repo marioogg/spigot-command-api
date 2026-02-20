@@ -1,12 +1,12 @@
-package me.gleeming.command.bukkit;
+package me.marioogg.command.bukkit;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
-import me.gleeming.command.CommandHandler;
-import me.gleeming.command.help.HelpNode;
-import me.gleeming.command.node.ArgumentNode;
-import me.gleeming.command.node.CommandNode;
-import me.gleeming.command.parameter.ParamProcessor;
+import me.marioogg.command.CommandHandler;
+import me.marioogg.command.help.HelpNode;
+import me.marioogg.command.node.ArgumentNode;
+import me.marioogg.command.node.CommandNode;
+import me.marioogg.command.parameter.ParamProcessor;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

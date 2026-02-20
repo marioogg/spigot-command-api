@@ -35,7 +35,7 @@ You can also create custom processors which there is an example of at the bottom
 * **Misc:** World, Boolean, Duration, ChatColor, Gamemode
 
 ### Maven & Gradle Implementation
-![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmaven.marioogg.dev%2Fservice%2Frest%2Fv1%2Fsearch%3Frepository%3Dpublic%26group%3Dme.gleeming.command%26name%3Dspigot-command-api%26sort%3Dversion%26direction%3Ddesc&query=$.items[0].version&label=Nexus&color=0A66C2&style=for-the-badge)
+![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmaven.marioogg.dev%2Fservice%2Frest%2Fv1%2Fsearch%3Frepository%3Dpublic%26group%3Dme.marioogg.command%26name%3Dspigot-command-api%26sort%3Dversion%26direction%3Ddesc&query=$.items[0].version&label=Nexus&color=0A66C2&style=for-the-badge)
 
 **Maven:** In your *pom.xml* file, add the repository and the dependency.
 > **Important:** Replace `VERSION` with the latest available version (see Nexus badge above).
@@ -66,7 +66,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'me.gleeming.command:command:VERSION'
+    implementation 'me.marioogg.command:command:VERSION'
 }
 ```
 

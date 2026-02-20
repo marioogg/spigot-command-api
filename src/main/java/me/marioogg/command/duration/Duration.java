@@ -1,4 +1,4 @@
-package me.gleeming.command.duration;
+package me.marioogg.command.duration;
 
 import lombok.Data;
 
