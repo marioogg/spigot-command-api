@@ -9,6 +9,8 @@ import me.marioogg.command.help.HelpNode;
 import me.marioogg.command.parameter.Param;
 import me.marioogg.command.parameter.ParamProcessor;
 import me.marioogg.command.scheduler.SchedulerUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -43,6 +45,8 @@ public class CommandNode {
 
     // The help nodes associated with this node
     private final List<HelpNode> helpNodes = new ArrayList<>();
+
+    private static final Logger log = LogManager.getLogger();
 
     public CommandNode(Object parentClass, Method method, Command command) {
         // Loads names
@@ -259,7 +263,7 @@ public class CommandNode {
         if(async) {
             final List<Object> asyncObjects = objects;
             SchedulerUtil.runAsync(() -> {
-                try { method.invoke(parentClass, asyncObjects.toArray()); } catch(Exception exception) { exception.printStackTrace(); }
+                try { method.invoke(parentClass, asyncObjects.toArray()); } catch(Exception e) { log.error(e); }
             });
             return;
         }

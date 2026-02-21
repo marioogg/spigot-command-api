@@ -13,6 +13,8 @@ import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.proxy.Player;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Method;
 import java.util.*;
@@ -35,6 +37,8 @@ public class VelocityCommandNode {
 
     private final List<ArgumentNode> parameters = new ArrayList<>();
     private final List<HelpNode> helpNodes = new ArrayList<>();
+
+    private static final Logger log = LogManager.getLogger();
 
     public VelocityCommandNode(Object parentClass, Method method, Command command) {
         Arrays.stream(command.names()).forEach(name -> names.add(name.toLowerCase()));
@@ -216,7 +220,7 @@ public class VelocityCommandNode {
             final List<Object> asyncObjects = objects;
             VelocityCommandHandler.getProxy().getScheduler()
                     .buildTask(VelocityCommandHandler.getPlugin(), () -> {
-                        try { method.invoke(parentClass, asyncObjects.toArray()); } catch (Exception e) { e.printStackTrace(); }
+                        try { method.invoke(parentClass, asyncObjects.toArray()); } catch (Exception e) { log.error(e); }
                     }).schedule();
             return;
         }

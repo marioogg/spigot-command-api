@@ -1,5 +1,6 @@
 package me.marioogg.command.bungee.node;
 
+import com.avaje.ebean.LogLevel;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import me.marioogg.command.Command;
@@ -13,10 +14,13 @@ import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Method;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Level;
 
 @Getter
 public class BungeeCommandNode {
@@ -35,6 +39,9 @@ public class BungeeCommandNode {
 
     private final List<ArgumentNode> parameters = new ArrayList<>();
     private final List<HelpNode> helpNodes = new ArrayList<>();
+
+    private static final Logger log = LogManager.getLogger();
+
 
     public BungeeCommandNode(Object parentClass, Method method, Command command) {
         Arrays.stream(command.names()).forEach(name -> names.add(name.toLowerCase()));
@@ -215,7 +222,7 @@ public class BungeeCommandNode {
         if (async) {
             final List<Object> asyncObjects = objects;
             BungeeCommandHandler.getPlugin().getProxy().getScheduler().runAsync(BungeeCommandHandler.getPlugin(), () -> {
-                try { method.invoke(parentClass, asyncObjects.toArray()); } catch (Exception e) { e.printStackTrace(); }
+                try { method.invoke(parentClass, asyncObjects.toArray()); } catch (Exception e) { log.error(e); }
             });
             return;
         }
