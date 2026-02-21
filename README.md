@@ -32,7 +32,8 @@ To keep my Java packages ordered, I'll probably rename the packages to `me.mario
 You can also register custom processors for any type — see the processor examples below.
 ---
 ### Maven & Gradle Implementation
-![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmaven.marioogg.dev%2Fservice%2Frest%2Fv1%2Fsearch%3Frepository%3Dpublic%26group%3Dme.marioogg.command%26name%3Dspigot-command-api%26sort%3Dversion%26direction%3Ddesc&query=$.items[0].version&label=Nexus&color=0A66C2&style=for-the-badge)
+![Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmaven.marioogg.dev%2Fservice%2Frest%2Fv1%2Fsearch%3Frepository%3Dpublic%26group%3Dme.marioogg%26name%3Dcommand%26sort%3Dversion%26direction%3Ddesc&query=$.items[0].version&label=Nexus&color=0A66C2&style=for-the-badge)
+
 **Maven:** In your *pom.xml*, add the repository and dependency.
 > **Important:** Replace `VERSION` with the latest version shown in the badge above.
 ```xml
