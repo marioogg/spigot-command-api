@@ -5,13 +5,12 @@ plugins {
     id 'com.gradleup.shadow' version '8.3.3'
 }
 
-group 'me.gleeming.command'
-version '1.0-SNAPSHOT'
+group 'me.marioogg'
+version '1.1'
 
 repositories {
-    mavenCentral()
-    maven { url 'https://jitpack.io/' }
-    maven { url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url 'https://maven.marioogg.dev/repository/public/' }
+    maven { url 'https://repo.papermc.io/repository/maven-public/' }
 }
 
 publishing {
@@ -23,7 +22,12 @@ publishing {
 
     repositories {
         maven {
-            url "https://maven.marioogg.dev/repository/snapshots"
+            def isSnapshot = version.toString().endsWith("SNAPSHOT")
+            def releasesRepoUrl = "https://maven.marioogg.dev/repository/releases"
+            def snapshotsRepoUrl = "https://maven.marioogg.dev/repository/snapshots"
+
+            url = uri(isSnapshot ? snapshotsRepoUrl : releasesRepoUrl)
+
             credentials {
                 username = System.getenv("MAVEN_USERNAME")
                 password = System.getenv("MAVEN_PASSWORD")
@@ -36,9 +40,16 @@ dependencies {
     compileOnly('org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT') {
         exclude group: 'net.md-5'
     }
+    compileOnly('dev.folia:folia-api:1.20.1-R0.1-SNAPSHOT') {
+        exclude group: 'net.md-5'
+    }
+    compileOnly 'net.md-5:bungeecord-api:1.20-R0.2-SNAPSHOT'
+    compileOnly 'com.velocitypowered:velocity-api:3.3.0-SNAPSHOT'
+    implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
