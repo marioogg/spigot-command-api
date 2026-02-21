@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.SneakyThrows;
 import me.marioogg.command.Command;
 import me.marioogg.command.bungee.BungeeCommandHandler;
-import me.marioogg.command.bungee.bukkit.BungeeBukkitCommand;
+import me.marioogg.command.bungee.bukkit.BungeeRawCommand;
 import me.marioogg.command.bungee.parameter.BungeeParamProcessor;
 import me.marioogg.command.help.HelpNode;
 import me.marioogg.command.node.ArgumentNode;
@@ -56,8 +56,8 @@ public class BungeeCommandNode {
         });
 
         names.forEach(name -> {
-            if (!BungeeBukkitCommand.getCommands().containsKey(name.split(" ")[0].toLowerCase()))
-                new BungeeBukkitCommand(name.split(" ")[0].toLowerCase());
+            if (!BungeeRawCommand.getCommands().containsKey(name.split(" ")[0].toLowerCase()))
+                new BungeeRawCommand(name.split(" ")[0].toLowerCase());
         });
 
         List<String> toAdd = new ArrayList<>();
