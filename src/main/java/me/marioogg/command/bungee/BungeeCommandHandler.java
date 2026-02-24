@@ -7,8 +7,8 @@ import lombok.SneakyThrows;
 import me.marioogg.command.bungee.node.BungeeCommandNode;
 import me.marioogg.command.bungee.parameter.BungeeParamProcessor;
 import me.marioogg.command.bungee.parameter.BungeeProcessor;
-import me.marioogg.command.help.Help;
-import me.marioogg.command.help.HelpNode;
+import me.marioogg.command.common.help.Help;
+import me.marioogg.command.common.help.HelpNode;
 import net.md_5.bungee.api.plugin.Plugin;
 
 import java.util.Arrays;

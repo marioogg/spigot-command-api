@@ -2,8 +2,8 @@ package me.marioogg.command.velocity.command;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
-import me.marioogg.command.help.HelpNode;
-import me.marioogg.command.node.ArgumentNode;
+import me.marioogg.command.common.help.HelpNode;
+import me.marioogg.command.bukkit.node.ArgumentNode;
 import me.marioogg.command.velocity.VelocityCommandHandler;
 import me.marioogg.command.velocity.node.VelocityCommandNode;
 import me.marioogg.command.velocity.parameter.VelocityParamProcessor;

@@ -9,6 +9,7 @@ To keep my Java packages ordered, I'll probably rename the packages to `me.mario
 - [x] Add Velocity Support
 - [ ] Add a proper wiki instead of dropping everything on here
 - [ ] Adding a configurable no permission message
+- [ ] Adding a custom tab complete system
 ### Features
 * Creates usage messages for you
 * Automatically parses parameters

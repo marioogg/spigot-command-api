@@ -1,4 +1,4 @@
-package me.marioogg.command.scheduler;
+package me.marioogg.command.bukkit.scheduler;
 
 import me.marioogg.command.CommandHandler;
 import org.bukkit.Bukkit;

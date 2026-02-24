@@ -1,14 +1,14 @@
-package me.marioogg.command.node;
+package me.marioogg.command.bukkit.node;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
 import me.marioogg.command.Command;
 import me.marioogg.command.CommandHandler;
 import me.marioogg.command.bukkit.BukkitCommand;
-import me.marioogg.command.help.HelpNode;
-import me.marioogg.command.parameter.Param;
-import me.marioogg.command.parameter.ParamProcessor;
-import me.marioogg.command.scheduler.SchedulerUtil;
+import me.marioogg.command.common.help.HelpNode;
+import me.marioogg.command.bukkit.parameter.Param;
+import me.marioogg.command.bukkit.parameter.ParamProcessor;
+import me.marioogg.command.bukkit.scheduler.SchedulerUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.ChatColor;

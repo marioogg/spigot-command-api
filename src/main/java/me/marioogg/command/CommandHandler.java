@@ -4,11 +4,11 @@ import com.google.common.reflect.ClassPath;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
-import me.marioogg.command.help.Help;
-import me.marioogg.command.help.HelpNode;
-import me.marioogg.command.node.CommandNode;
-import me.marioogg.command.parameter.ParamProcessor;
-import me.marioogg.command.parameter.Processor;
+import me.marioogg.command.common.help.Help;
+import me.marioogg.command.common.help.HelpNode;
+import me.marioogg.command.bukkit.node.CommandNode;
+import me.marioogg.command.bukkit.parameter.ParamProcessor;
+import me.marioogg.command.bukkit.parameter.Processor;
 import org.bukkit.plugin.Plugin;
 
 import java.util.*;
