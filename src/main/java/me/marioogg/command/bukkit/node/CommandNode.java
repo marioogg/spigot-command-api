@@ -3,7 +3,7 @@ package me.marioogg.command.bukkit.node;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import me.marioogg.command.Command;
-import me.marioogg.command.CommandHandler;
+import me.marioogg.command.bukkit.BukkitCommandHandler;
 import me.marioogg.command.bukkit.BukkitCommand;
 import me.marioogg.command.common.help.HelpNode;
 import me.marioogg.command.bukkit.parameter.Param;
@@ -79,7 +79,7 @@ public class CommandNode {
 
         // Makes it so you can use /plugin:command
         List<String> toAdd = new ArrayList<>();
-        names.forEach(name -> toAdd.add(CommandHandler.getPlugin().getName() + ":" + name.toLowerCase()));
+        names.forEach(name -> toAdd.add(BukkitCommandHandler.getPlugin().getName() + ":" + name.toLowerCase()));
         names.addAll(toAdd);
 
         // Add node to array list

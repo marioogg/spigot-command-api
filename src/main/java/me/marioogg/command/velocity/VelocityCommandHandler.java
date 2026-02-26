@@ -10,12 +10,16 @@ import me.marioogg.command.common.help.HelpNode;
 import me.marioogg.command.velocity.node.VelocityCommandNode;
 import me.marioogg.command.velocity.parameter.VelocityParamProcessor;
 import me.marioogg.command.velocity.parameter.VelocityProcessor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
 public class VelocityCommandHandler {
     @Getter @Setter private static Object plugin;
     @Getter @Setter private static ProxyServer proxy;
+
+    private static final Logger logger = LoggerFactory.getLogger(VelocityCommandHandler.class);
 
     public static void init(Object plugin, ProxyServer proxy) {
         VelocityCommandHandler.plugin = plugin;
@@ -33,14 +37,14 @@ public class VelocityCommandHandler {
     @SneakyThrows
     public static void registerCommands(Class<?> commandClass, Object plugin, ProxyServer proxy) {
         VelocityCommandHandler.init(plugin, proxy);
-        registerCommands(commandClass.newInstance());
+        registerCommands(commandClass.getDeclaredConstructor().newInstance());
     }
 
     @SneakyThrows
     public static void registerCommands(Object plugin, ProxyServer proxy, Class<?>... commandClasses) {
         VelocityCommandHandler.init(plugin, proxy);
         for (Class<?> commandClass : commandClasses) {
-            registerCommands(commandClass.newInstance());
+            registerCommands(commandClass.getDeclaredConstructor().newInstance());
         }
     }
 
@@ -69,8 +73,8 @@ public class VelocityCommandHandler {
                 .filter(info -> info.getPackageName().startsWith(path))
                 .filter(info -> info.load().getSuperclass().equals(VelocityProcessor.class))
                 .forEach(info -> {
-                    try { VelocityParamProcessor.createProcessor((VelocityProcessor<?>) info.load().newInstance());
-                    } catch (Exception e) { e.printStackTrace(); }
+                    try { VelocityParamProcessor.createProcessor((VelocityProcessor<?>) info.load().getDeclaredConstructor().newInstance());
+                    } catch (Exception e) { logger.error("Error registering command processors: ", e); }
                 });
     }
 

@@ -3,13 +3,6 @@
 I did not make nor helped in the initial development of this project. All the credit goes to [ashtton](https://github.com/ashtton) and his [original project](https://github.com/ashtton/spigot-command-api).
 What I'll actually do is maintain this plugin updated and according to my needs, while keeping it public, as far as providing builds on my Maven repository (check below).
 To keep my Java packages ordered, I'll probably rename the packages to `me.marioogg.*` (already in process), although this message will stay here because my intention will never be skidding other ones code. If you have any kind of proposal to add a feature, open a [pull request](https://github.com/marioogg/command/pulls) or an [issue](https://github.com/marioogg/command/issues)
-## To do
-- [x] Add Folia Support
-- [x] Add BungeeCord Support
-- [x] Add Velocity Support
-- [ ] Add a proper wiki instead of dropping everything on here
-- [ ] Adding a configurable no permission message
-- [ ] Adding a custom tab complete system
 ### Features
 * Creates usage messages for you
 * Automatically parses parameters
@@ -22,14 +15,11 @@ To keep my Java packages ordered, I'll probably rename the packages to `me.mario
 > **NOTE:** <br>
 > It's recommended to relocate the library to avoid version conflicts with other plugins that use the framework.
 ### Parsing
-**Bukkit / Spigot / Paper / Folia:**
-* **Numbers:** Integer, Long, Double, Float
-* **Players:** Player, OfflinePlayer
-* **Misc:** World, Boolean, Duration, ChatColor, GameMode
-**BungeeCord:**
+* **Numbers:** Integer, Long, Double, Float (Bukkit only)
+* **Players:** Player, OfflinePlayer (Bukkit only)
+* **Misc:** World, Boolean, Duration, ChatColor, GameMode (Bukkit only)
 * **Numbers:** Integer, Long, Double, Float
 * **Misc:** Boolean
-**Velocity:**
 * **Numbers:** Integer, Long, Double, Float
 * **Misc:** Boolean
 You can also register custom processors for any type — see the processor examples below.
@@ -72,31 +62,31 @@ public class MainClass extends JavaPlugin {
     @Override
     public void onEnable() {
         // Recommended — scans the entire package and registers every @Command method found
-        CommandHandler.registerCommands("me.marioogg.plugin.commands", this);
+        BukkitCommandHandler.registerCommands("me.marioogg.plugin.commands", this);
         // Register a single class
-        CommandHandler.registerCommands(MyCommands.class, this);
+        BukkitCommandHandler.registerCommands(MyCommands.class, this);
         // Register multiple classes at once
-        CommandHandler.registerCommands(this, MyCommands.class, AdminCommands.class);
+        BukkitCommandHandler.registerCommands(this, MyCommands.class, AdminCommands.class);
     }
 }
 ```
 ### @Command Annotation Reference
-| Property | Type | Default | Description |
-|---|---|---|---|
-| `names` | `String[]` | — | One or more aliases. Supports sub-commands via spaces, e.g. `"f create"`. |
-| `permission` | `String` | `""` | Required permission node. Leave empty to allow everyone. |
-| `description` | `String` | `""` | Short description shown in help messages. |
-| `playerOnly` | `boolean` | `false` | Restricts the command to players only. |
-| `consoleOnly` | `boolean` | `false` | Restricts the command to console only. |
-| `async` | `boolean` | `false` | Runs the command off the main thread. On Folia, routes through `AsyncScheduler` automatically. |
-| `allowComplete` | `boolean` | `true` | Whether tab completion is enabled for this command. |
+| Property        | Type       | Default | Description                                                                                    |
+|-----------------|------------|---------|------------------------------------------------------------------------------------------------|
+| `names`         | `String[]` | —       | One or more aliases. Supports sub-commands via spaces, e.g. `"f create"`.                      |
+| `permission`    | `String`   | `""`    | Required permission node. Leave empty to allow everyone.                                       |
+| `description`   | `String`   | `""`    | Short description shown in help messages.                                                      |
+| `playerOnly`    | `boolean`  | `false` | Restricts the command to players only.                                                         |
+| `consoleOnly`   | `boolean`  | `false` | Restricts the command to console only.                                                         |
+| `async`         | `boolean`  | `false` | Runs the command off the main thread. On Folia, routes through `AsyncScheduler` automatically. |
+| `allowComplete` | `boolean`  | `true`  | Whether tab completion is enabled for this command.                                            |
 ### @Param Annotation Reference
-| Property | Type | Default | Description |
-|---|---|---|---|
-| `name` | `String` | — | Display name used in the auto-generated usage message. |
-| `required` | `boolean` | `true` | Whether the argument is mandatory. Optional arguments appear as `[name]` in the usage. |
-| `concated` | `boolean` | `false` | Joins all remaining arguments into a single `String`. Shown as `<name..>` in the usage. |
-| `defaultValue` | `String` | `""` | Raw value passed through the processor when the argument is omitted. Only applies when `required = false`. |
+| Property       | Type      | Default | Description                                                                                                |
+|----------------|-----------|---------|------------------------------------------------------------------------------------------------------------|
+| `name`         | `String`  | —       | Display name used in the auto-generated usage message.                                                     |
+| `required`     | `boolean` | `true`  | Whether the argument is mandatory. Optional arguments appear as `[name]` in the usage.                     |
+| `concated`     | `boolean` | `false` | Joins all remaining arguments into a single `String`. Shown as `<name..>` in the usage.                    |
+| `defaultValue` | `String`  | `""`    | Raw value passed through the processor when the argument is omitted. Only applies when `required = false`. |
 ### Command Examples
 ```java
 public class MyCommands {
@@ -168,7 +158,7 @@ public class FactionCommands {
     public void factionDisbandCommand(Player sender) {
         sender.sendMessage(ChatColor.RED + "Your faction has been disbanded.");
     }
-    // Shown when /f or /faction is run with no recognisable sub-command.
+    // Shown when /f or /faction is run with no recognizable sub-command.
     // If no @Help is registered, an auto-generated usage message is shown instead.
     @Help(names = {"f", "faction"})
     public void factionHelp(CommandSender sender) {
@@ -185,8 +175,8 @@ public class MainClass extends JavaPlugin {
     public void onEnable() {
         new RankProcessor();
         // Or scan an entire package for processors:
-        CommandHandler.registerProcessors("me.marioogg.plugin.processors", this);
-        CommandHandler.registerCommands("me.marioogg.plugin.commands", this);
+        BukkitCommandHandler.registerProcessors("me.marioogg.plugin.processors", this);
+        BukkitCommandHandler.registerCommands("me.marioogg.plugin.commands", this);
     }
 }
 public enum Rank { MEMBER, MODERATOR, ADMIN }

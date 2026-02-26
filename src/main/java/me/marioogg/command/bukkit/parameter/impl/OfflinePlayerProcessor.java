@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+
+@SuppressWarnings("deprecation")
 public class OfflinePlayerProcessor extends Processor<OfflinePlayer> {
     public OfflinePlayer process(CommandSender sender, String supplied) {
         OfflinePlayer player = Bukkit.getOfflinePlayer(supplied);

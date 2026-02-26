@@ -2,7 +2,6 @@ package me.marioogg.command.bukkit;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
-import me.marioogg.command.CommandHandler;
 import me.marioogg.command.common.help.HelpNode;
 import me.marioogg.command.bukkit.node.ArgumentNode;
 import me.marioogg.command.bukkit.node.CommandNode;
@@ -23,9 +22,9 @@ public class BukkitCommand extends Command {
         super(root);
         commands.put(root.toLowerCase(), this);
 
-        Field commandMap = CommandHandler.getPlugin().getServer().getClass().getDeclaredField("commandMap");
+        Field commandMap = BukkitCommandHandler.getPlugin().getServer().getClass().getDeclaredField("commandMap");
         commandMap.setAccessible(true);
-        ((org.bukkit.command.CommandMap) commandMap.get(CommandHandler.getPlugin().getServer())).register(CommandHandler.getPlugin().getName(), this);
+        ((org.bukkit.command.CommandMap) commandMap.get(BukkitCommandHandler.getPlugin().getServer())).register(BukkitCommandHandler.getPlugin().getName(), this);
     }
 
     @SneakyThrows
