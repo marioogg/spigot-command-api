@@ -2,6 +2,7 @@ package me.marioogg.command.bukkit;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
+import me.marioogg.command.common.flag.FlagNode;
 import me.marioogg.command.common.help.HelpNode;
 import me.marioogg.command.bukkit.node.ArgumentNode;
 import me.marioogg.command.bukkit.node.CommandNode;
@@ -69,13 +70,42 @@ public class BukkitCommand extends Command {
             if(node.getMatchProbability(sender, label, args, true) >= 50) {
 
                 int extraLength = node.getNames().get(0).split(" ").length - 1;
-                int arg = (args.length - extraLength) - 1;
 
-                if(arg < 0 || node.getParameters().size() < arg + 1)
-                    return new ArrayList<>();
+                // Count positional (non-flag) args typed so far
+                String currentArg = args[args.length - 1];
+                List<String> positionalSoFar = new ArrayList<>();
+                for(int i = extraLength; i < args.length - 1; i++) {
+                    String a = args[i];
+                    if(node.getFlagNodes().stream().anyMatch(fn -> fn.matches(a))) continue;
+                    positionalSoFar.add(a);
+                }
+                int positionalArgIndex = positionalSoFar.size();
 
-                ArgumentNode argumentNode = node.getParameters().get(arg);
-                return new ParamProcessor(argumentNode, args[args.length - 1], sender).getTabComplete();
+                List<String> completions = new ArrayList<>();
+
+                // Positional param completions
+                if(positionalArgIndex < node.getParameters().size()) {
+                    ArgumentNode argumentNode = node.getParameters().get(positionalArgIndex);
+                    completions.addAll(new ParamProcessor(argumentNode, currentArg, sender).getTabComplete());
+                }
+
+                // Flag completions (only suggest flags not yet present in args)
+                Set<String> usedFlags = new HashSet<>();
+                for(int i = extraLength; i < args.length - 1; i++) {
+                    String a = args[i];
+                    node.getFlagNodes().stream().filter(fn -> fn.matches(a)).findFirst()
+                            .ifPresent(fn -> usedFlags.add(fn.getValue()));
+                }
+                for(FlagNode fn : node.getFlagNodes()) {
+                    if(usedFlags.contains(fn.getValue())) continue;
+                    for(String token : fn.getTokens()) {
+                        if(token.toLowerCase().startsWith(currentArg.toLowerCase())) {
+                            completions.add(token);
+                        }
+                    }
+                }
+
+                return completions;
             }
 
             return sortedNodes.stream()
