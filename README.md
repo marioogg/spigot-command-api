@@ -7,14 +7,11 @@ To keep my Java packages ordered, I'll probably rename the packages to `me.mario
 Also, documentation has been moved to [the wiki.](https://github.com/marioogg/command/wiki)
 
 ### Features
-* Creates usage messages for you
-* Automatically parses parameters
-* Easily register all your commands
-* No need for commands in plugin.yml / bungee.yml
-* Makes it easier than ever to create commands
+* Well-documented and javadoc'ed annotation command registration
+* Flexible and easy-to-use parameter annotation system (`@Param`)
+* Also flexible and easy to use tag system (e.g. --silent or -s) (`@Tag`) (to be finished)
 * Automatic tab completion
-* Tab completion for your custom objects via processors
-* Supports Bukkit, Spigot, Paper, Folia, BungeeCord and Velocity
+* Customizable tab completion objects via processors
 > **NOTE:** <br>
 > It's recommended to relocate the library to avoid version conflicts with other plugins that use the framework.
 ### Parsing
