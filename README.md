@@ -1,4 +1,12 @@
 # MC Command Framework
+
+# EVEN BIGGER DISCLAIMER:
+Everything developed in this branch is still on development! 
+I can't assure that this will work on your server and even less be stable. 
+I'd recommend using the [master branch](https://github.com/marioogg/command/tree/master) and the stable builds provided [in the wiki](https://github.com/marioogg/command/wiki), although if you want to risk it, at least use [the beta branch](https://github.com/marioogg/command/tree/beta) that at least those features are tested, 
+these are untested, purely new-coded features that will receive no support at all!
+
+
 ### DISCLAIMER:
 I did not make nor helped in the initial development of this project. All the credit goes to [ashtton](https://github.com/ashtton) and his [original project](https://github.com/ashtton/spigot-command-api).
 What I'll actually do is maintain this plugin updated and according to my needs, while keeping it public, as far as providing builds on my Maven repository (check below).
