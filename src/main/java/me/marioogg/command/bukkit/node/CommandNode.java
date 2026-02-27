@@ -14,9 +14,11 @@ import me.marioogg.command.bukkit.scheduler.SchedulerUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bukkit.ChatColor;
+import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import org.spigotmc.SpigotConfig;
 
 import java.lang.reflect.Method;
 import java.util.*;
@@ -33,6 +35,7 @@ public class CommandNode {
     private final String description;
     private final boolean async;
     private final boolean allowComplete;
+    private final boolean hidden;
 
     // Executor information
     private final boolean playerOnly;
@@ -64,6 +67,7 @@ public class CommandNode {
         this.playerOnly = command.playerOnly();
         this.consoleOnly = command.consoleOnly();
         this.allowComplete = command.allowComplete();
+        this.hidden = command.hidden();
 
         // Reflection
         this.parentClass = parentClass;
@@ -182,6 +186,10 @@ public class CommandNode {
             return;
         }
 
+        if ((!sender.isOp() || (!permission.isEmpty() && !sender.hasPermission(permission))) && hidden) {
+            sender.sendMessage(SpigotConfig.unknownCommandMessage);
+        }
+
         if(!permission.isEmpty() && !sender.hasPermission(permission)) {
             sender.sendMessage(ChatColor.RED + "I'm sorry, you do not have permission to execute this command.");
             return;
@@ -223,7 +231,7 @@ public class CommandNode {
     public void execute(CommandSender sender, String[] args) {
         // Checks if the player has permission
         if(!permission.isEmpty() && !sender.hasPermission(permission)) {
-            sender.sendMessage(ChatColor.RED + "I'm sorry, although you do not have permission to execute this command.");
+            sender.sendMessage(ChatColor.RED+"I'm sorry, but you do not have permission to perform this command.");
             return;
         }
 
