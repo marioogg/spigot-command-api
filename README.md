@@ -17,7 +17,7 @@ Also, documentation has been moved to [the wiki.](https://github.com/marioogg/co
 ### Features
 * Well-documented and javadoc'ed annotation command registration
 * Flexible and easy-to-use parameter annotation system (`@Param`)
-* Also flexible and easy to use tag system (e.g. --silent or -s) (`@Tag`) (to be finished)
+* Also flexible and easy to use flag system (e.g. --silent or -s) (`@Flag`) (to be finished)
 * Automatic tab completion
 * Customizable tab completion objects via processors
 > **NOTE:** <br>
